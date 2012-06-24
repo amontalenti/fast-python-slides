@@ -1,22 +1,19 @@
 .. include:: <s5defs.txt>
 
-======================
-Introduction to Python
-======================
+===========
+Fast Python
+===========
 
 :Author:  Andrew Montalenti
-:Date:    $Date: 2011-06-15 09:00:00 -0500 (Tues, 15 Jun 2011) $
+:Date:    $Date: 2012-06-24 11:00:00 -0500 (Sun, 24 Jun 2012) $
 
-.. This document is copyright Andrew Montalenti and Aleph Point, Inc.
+.. This document is copyright Andrew Montalenti
 
 .. container:: handout
 
     **How this was made**
 
     This document was created using Docutils_/reStructuredText_ and S5_.
-
-    It is the introductory Python course given by Aleph Point, Inc. to
-    the newest generation of Python hackers.
 
     Simplicity begets elegance.
 
@@ -42,12 +39,17 @@ Introduction to Python
 Read slides on your own
 -----------------------
 
-http://pixelmonkey.org/python-training
+http://pixelmonkey.org/pub/fast-python
+
+shorter: http://bit.ly/fast-python
+
 
 Meta Information
 ----------------
 
-**Me**: I've been using Python for 10 years. I use Python full-time, and have for the last 3 years. I'm the founder/principal at `Aleph Point`_, an agile software engineering consulting and training firm. I'm also the co-founder/CTO of Parse.ly_, a tech startup in the digital media space.
+**Me**: I've been using Python for over 10 years. I use Python full-time, and have for the last 4 years.
+
+**Professionally**: I'm the co-founder/CTO of Parse.ly_, a tech startup in the digital media space. We build web analytics systems and APIs for the web's best publishers. I'm also the founder/principal at `Aleph Point`_, an agile software engineering consulting and training firm. 
 
 **E-mail me**: andrew@alephpoint.com
 
@@ -58,17 +60,6 @@ Meta Information
 .. _Aleph Point: http://alephpoint.com
 .. _Parse.ly: http://parsely.com
 .. _amontalenti: http://twitter.com/amontalenti
-
-Other skills are fair game, too
---------------------------------
-
-    * Java
-    * Groovy
-    * JavaScript
-    * SVN / Mercurial
-    * Web development
-    * Computer Science
-    * ...
 
 Slide Zero
 -----------
@@ -87,67 +78,6 @@ Simplicity begets elegance.
     2 51
     3 32
     4 5
-
-Simplicity
-----------
-
-.. class:: incremental
-
-    Beautiful is better than ugly.
-
-    Explicit is better than implicit.
-
-    Simple is better than complex.
-
-    Complex is better than complicated.
-
-Readability
------------
-
-.. class:: incremental
-
-    Flat is better than nested.
-
-    Sparse is better than dense.
-
-    Readability counts.
-
-    Special cases aren't special enough to break the rules.
-
-    Although practicality beats purity.
-
-
-Predictability
---------------
-
-.. class:: incremental
-
-    Errors should never pass silently.
-
-    Unless explicitly silenced.
-
-    In the face of ambiguity, refuse the temptation to guess.
-
-    There should be one-- and preferably only one --obvious way to do it.
-
-    Although that way may not be obvious at first unless you're Dutch.
-
-
-Practicality
-------------
-
-.. class:: incremental
-
-    Now is better than never.
-
-    Although never is often better than *right* now.
-
-    If the implementation is hard to explain, it's a bad idea.
-
-    If the implementation is easy to explain, it may be a good idea.
-
-    Namespaces are one honking great idea -- let's do more of those!
-
 
 The Zen of Python
 -----------------
@@ -226,25 +156,6 @@ Python is unique in that it also has:
     * a wide acceptance for web development
     * a slew of academic programming libraries (bioinformatics, NLP)
     * several options for increasing performance 
-
-My Job
--------
-
-My job is easy because Python was built as a teaching language.
-
-I learned Python using an online book called *Dive Into Python*, by Mark Pilgrim.
-
-The concept behind that book is that Python is such a readable language, that
-we can learn it by reading well-written Python programs.
-
-We'll try to use this approach to good effect.
-
-I have an opinion, and so will you
-----------------------------------
-
-Python is an opinionated language, and I have an opinion about code.
-
-In this class, you will learn to write opinionated code that has good style.
 
 Our first program
 -----------------
@@ -369,30 +280,15 @@ Development Environment Setup
 
 Behind every good Python programmer is a good development environment.
 
-For this course, I've suggested your company set up the following tools:
-
 .. class:: incremental
 
     * **Python 2.7**: the latest "stable/prod" version of Python
-    * **Console2**: a better console for Windows
-    * **Cream**: an easy-to-use extension of the ViM text editor
-    * **WingIDE 101**: a full-fledged Python IDE
-    * **IPython**: an interactive Python shell
-
-Quick note on WingIDE
----------------------
-
-.. image:: img/02_ide.png
-    :class: scaled
-
-Python, IPython, BPython, DreamPie
-----------------------------------
-
-One of Python's best features is the REPL loop, or **Read**, **Evaluate**, **Print** **Loop**.
-
-Open source developers have created a number of "enhanced" REPLs over the years. The most common of these is **IPython**, but there is also **BPython** and **DreamPie**.
-
-WingIDE has its own REPL that is integrated with the IDE and works in debug mode, as well.
+    * **IPython 0.13**: an enhanced Python shell for prototyping
+    * **setuptools**: utility for installing 3rd-party modules
+    * **pip**: enhanced utility for 3rd-party modules
+    * **virtualenv**: a way to create self-contained Python environments
+    * **editor**: I like vim (light) and KomodoEdit/SublimeText (heavy)
+    * **UNIX**: http://bit.ly/unix-kitchen
 
 BREAK: Confirm system settings
 ------------------------------
@@ -402,7 +298,8 @@ BREAK: Confirm system settings
 The basics
 ----------
 
-In traditional compiled languages like C/C++, you think about *user programs* which run directly on the operating system.
+In traditional compiled languages like C/C++, you think about *user programs*
+which run directly on the operating system.
 
 .. image:: img/01_prog.png 
     :align: center
@@ -410,7 +307,8 @@ In traditional compiled languages like C/C++, you think about *user programs* wh
 Python shell
 ------------
 
-Python introduces one more layer of abstraction, the *Python interpreter*, that is like a mini operating system running above the actual operating system.
+Python introduces one more layer of abstraction, the *Python interpreter*, that
+is like a mini operating system running above the actual operating system.
 
 There is no separate "compilation" step like C/C++/Java.
 
@@ -437,15 +335,6 @@ in files or provided at the command line.
 
     python -c "print 1 + 2"
     python myprog.py
-
-EXERCISES: Write our first programs
-------------------------------------
-
-    * http://blamcast.net/python/ex1.html
-    * http://blamcast.net/python/ex2.html
-    * http://blamcast.net/python/ex3.html
-    * http://blamcast.net/python/ex4.html
-    * http://blamcast.net/python/ex5.html
 
 Label assignment
 ----------------
@@ -821,7 +710,7 @@ Some early ones to look at are:
 
     * ``all`` and ``any`` for applying boolean filters to lists
     * ``dict``, ``list``, ``set``, and ``object``, all of which will be covered later
-    * ``hasattr``, ``getattr``, and ``setattr``, which are used for metaprogramming
+    * ``hasattr``, ``getattr``, and ``setattr``, for dynamic introspection
     * ``sorted`` and ``reversed`` for sorting lists
     * ``int``, ``str``, and ``float``, which act as type constructors and coercers
     * ``min``, ``max``, and ``sum`` for common list math
@@ -840,14 +729,7 @@ All objects are first-class
 
 The fact that everything in Python is first-class is often not fully appreciated by new programmers.
 
-How would you have written this in Java/C#?
-
-EXERCISES: Strings, Printing and Input
---------------------------------------
-
-    * http://blamcast.net/python/ex6.html
-    * http://blamcast.net/python/ex11.html
-    * http://blamcast.net/python/ex12.html
+How would you have written this in Java / C# / C++ / C?
 
 True, False, and None
 ---------------------
@@ -874,26 +756,6 @@ Object equality and identity
     True
     >>> y is not False
     True
-
-Control structures
-------------------
-
-.. sourcecode:: python
-    
-    if login_method == "admin" or user.staff:
-        print "allow login for admin"
-    elif authenticate(username, password):
-        print "allow login for user"
-    else:
-        raise AuthenticationError
-
-Truth tables
-------------
-
-Logical operations can be visualized with a truth table.
-
-.. image:: img/13_truthtable.png
-    :align: center
 
 Lack of switch statement
 ------------------------
@@ -1084,17 +946,6 @@ Use ``in`` where possible (2)
        if d.has_key(key):
            ...do something with d[key]
 
-Think data, not code
---------------------
-
-.. class:: incremental
-
-    * Java / C++ / VB programmers coming to Python often bring their
-      language-specific idioms with them
-    * Leverage Python's strongest features to make your code cleaner, shorter, and more readable
-    * ``switch`` statements are better written as dictionaries
-    * Avoid crutches you used to use because you had to
-
 Tuples
 ------
 
@@ -1139,14 +990,28 @@ Tuples very handy for nested sequences
     33
     44
 
-``enumerate`` for indexed iteration
-------------------------------------
+Think data, not code
+--------------------
+
+.. class:: incremental
+
+    * Java / C++ / C# programmers coming to Python often bring their
+      language-specific idioms with them
+    * Leverage Python's strongest features to make your code cleaner, shorter, and more readable
+    * ``switch`` statements are better written as dictionaries
+    * Avoid crutches you used to use because you had to
+
+
+enumerate for indexed iteration
+-------------------------------
 
 .. sourcecode:: java
 
     // Java code
     List<String> colors = new ArrayList<String>();
-    colors.add("yellow"); colors.add("magenta"); // ...
+    colors.add("yellow");
+    colors.add("magenta");
+    colors.add("lavender");
     for (int i = 0; i < colors.size(); i++) {
         String color = colors.get(i);
         System.out.println(i + " " + color);
@@ -1187,19 +1052,6 @@ Examples of sequences:
     * tuples
     * strings
 
-EXERCISES: Lists and Sorting
-----------------------------
-
-    * http://blamcast.net/python/ex32.html
-    * http://blamcast.net/python/ex33.html
-    * http://blamcast.net/python/ex34.html
-
-EXERCISES: Dictionaries and logic
----------------------------------
-
-    * http://blamcast.net/python/ex40.html
-    * http://blamcast.net/python/ex41.html
-
 Functions
 ---------
 
@@ -1210,7 +1062,7 @@ Functions
         Returns a quotient and remainder of division 
         operation in a 2-tuple."""
         q = a // b
-        r = a - q*b
+        r = a - q * b
         return q, r
 
 .. class:: incremental
@@ -1290,147 +1142,8 @@ Argument types
     * Eagerly checking for an argument type is an *anti-pattern* in Python
     * Instead, Pythonistas prefer what is known as *duck typing*
 
-Type checking anti-pattern
------------------------------------
-
-.. sourcecode:: python
-
-    def connect(domain, port=80, scheme="http", timeout=300):
-        if not isinstance(domain, basestring):
-            raise ValueError("domain must be a string")
-        if not isinstance(port, int):
-            raise ValueError("port must be an integer")
-        if not isinstance(timeout, int):
-            raise ValueError("timeout must be an integer")
-
-Why is this bad?
-----------------
-
-In many languages and communities, the code on the last slide isn't bad.
-
-But, in the Python community, it is.
-
-Arbitrary rigidity
-------------------
-
-The reason for this is a distaste for arbitrary rigidity:
-
-.. class:: incremental
-
-    * Python's dynamism leads to its flexibility
-    * does your function really rely on the ``list`` type, or does it just need something that is *list-like* (e.g. a set), namely, that supports iteration?
-    * does your function really rely on the ``file`` type, or does it just need something that is *file-like* (e.g. a buffer), namely, that supports reading?
-
-Take a deep breath
-------------------
-
-This concept, *duck typing*, is near and dear to many a Pythonista's heart.
-
-Eager checking anti-pattern
---------------------------------------
-
-.. sourcecode:: python
-
-    def connect(domain, port=80, scheme="http", timeout=300, client=None):
-        if client is not None:
-            http = client
-        else:
-            http = HTTPClient()
-        # ... setup as before ...
-        if not hasattr(http, "connect"):
-            raise ValueError("client missing connect attribute")
-        if not callable(http.connect):
-            raise ValueError("client's connect isn't a method")
-        http.connect("...")
-        return http
-
-Why is that bad?
-----------------
-
-Though eager checking is a virtue in many communities (e.g. Java), in Python, this is very much looked down upon.
-
-Python is built on a different principle known affectionately in the community as **EAFTP**. That's: **"Easier to Ask For Forgiveness Than Permission"**
-
-Be brave, we're all adults here
--------------------------------
-
-.. class:: incremental
-
-    In the code on the last slide, it was like we were walking on eggshells with the value passed to us by the user of the function.
-
-    The error messages are nice, the code is correct, but the essence of the function is polluted by the excessive checking.
-
-    *Why not just try to do what your function expects?*
-
-Forgiving, but not pedantic, code
----------------------------------
-
-.. sourcecode:: python
-
-    def connect(domain, port=80, scheme="http", timeout=300, client=None):
-        if client is not None:
-            http = client
-        else:
-            http = HTTPClient()
-        try:
-            http.connect("...")
-        except (AttributeError, TypeError) as ex:
-            log.error("client may not support protocol")
-            raise ex
-
-One more deep breath
---------------------
-
-.. class:: incremental
-
-    EAFTP is another concept near-and-dear to a Pythonista's heart.
-
-    The general idea is, rely more on exceptions and exception handling, than on validation and checking.
-
-    In addition to code cleanliness benefits, this often has performance benefits, too!
-
-Quirks of optional arguments
-----------------------------
-
-.. class:: incremental
-
-    * Optional arguments must be declared after required ones, and must have default values
-    * Default values are bound at declaration time, not function execution time
-    * The typical default value for an "optional argument with a complicated default" is ``None``
-
-A subtle, but common, bug
--------------------------
-
-.. sourcecode:: python
-
-    def download(domain, clients=[]):
-        if len(clients) == 0:
-            # what's wrong here?
-            clients.append(HTTPClient())
-        try:
-            for client in clients:
-                client.download("...")
-        except "...":
-            pass
-
-A subtle, but common, bug
--------------------------
-
-.. sourcecode:: python
-
-    def download(domain, clients=[]):
-        if len(clients) == 0:
-            clients.append(HTTPClient())
-
-.. class:: incremental
-
-    * Since the optional ``clients`` argument is associated at declaration-time, the same ``list`` instance is *shared* by all invocations of the function.
-    * This is probably not what you want, since on the second call to the function it will have two ``HTTPClient`` instances in it.
-    * This is even worse if you try to default e.g.  *empty dictionary*, as the bugs may be even more subtle!
-    * One of the less pleasant quirks of the language, IMO.
-
-EXERCISES: Write a functional program to spec
----------------------------------------------
+EXERCISES: Write a functional program
+-------------------------------------
 
 Expect to receive a URL of the format you would find on the web:
 
@@ -1489,7 +1202,7 @@ Simple URL formatter
 .. sourcecode:: python
 
     def format_url(d):
-        fmt = "{scheme}://{host}:{port}{path}"
+        fmt = "{Scheme}://{Host}:{Port}{Path}"
         url = fmt.format(**d) #** ignore that operator for now 
         if ":80" in url:
             url = url.replace(":80", "")
@@ -1504,26 +1217,12 @@ Integration test
     # end-to-end test
     assert format_url(url_parse(url)) == url
     
-EXERCISES: Strings and Lists
----------------------------------
-
-    * http://code.google.com/edu/languages/google-python-class/strings.html
-    * http://code.google.com/edu/languages/google-python-class/lists.html
-
-HOMEWORK: Chapters 1-5
-----------------------
-
-Will give more detail and color on the topics we covered today.
-
-Day 2
-------
-
-Day 1 Recap
------------
+Recap
+-----
 
 Python is a dynamic and opinionated language.
 
-On your first day, you learned the basics:
+You've already learned the basics:
 
 .. class:: incremental
     
@@ -1532,203 +1231,13 @@ On your first day, you learned the basics:
     * Data structures like dictionaries, lists, and tuples
     * String and number types
     * Function declaration and invocation
-    * Pythonic things (duck typing, EAFTP)
-    * Not-so-Pythonic things (eager checking, branchy code)
 
-Day 2 excitement
-----------------
+Some Excitement
+---------------
 
-Day 1 was to learn enough to be dangeorus.
+So far, we learned *just enough* to be dangerous.
 
-Day 2 is to be dangerous.
-
-Subroutines and repetetive code
--------------------------------
-
-.. sourcecode:: python
-
-    # step 1 -- convert strings to numbers
-    for item in data:
-        item[0] = int(item[0])
-        item[1] = float(item[1])
-    # step 2 -- calculate average for column 1
-    col1_data = []
-    for item in data:
-        col1_data.append(item[0])
-    col1_avg = sum(col1_data) / len(col1_data)
-    # step 3 -- calculate average for column 2
-    col2_data = []
-    for item in data:
-        col2_data.append(item[1])
-    col2_avg = sum(col2_data) / len(col2_data)
-    # step 4 -- output result to file
-    outfile = open("out.txt", "w")
-    outfile.write(col1_avg)
-    outfile.write(",")
-    outfile.write(col2_avg)
-
-Rewritten using subroutines
-----------------------------
-
-.. sourcecode:: python
-
-    def convert(data):
-        for item0, item1 in data:
-            item[0] = int(item0)
-            item[1] = float(item1)
-    def calc_avg(data, col_idx):
-        col_data = []
-        for cols in data:
-            col_data.append(cols[col_idx])
-        col_avg = sum(col_data) / len(col_data)
-        return col_avg
-    def write_file(fname, values):
-        outfile = open(fname, "w")
-        outfile.write(",".join(values))
-        outfile.close()
-    convert(data)
-    avg0 = calc_avg(data, 0)
-    avg1 = calc_avg(data, 1)
-    write_file("out.txt", (avg0, avg1))
-
-Module structure
-----------------
-
-.. sourcecode:: python
-
-    """module docstring"""
-
-    # imports
-    # constants
-    # exception classes
-    # interface functions
-    # classes
-    # internal functions & classes
-
-    def main(...):
-        ...
-
-    if __name__ == '__main__':
-        status = main()
-        sys.exit(status)
-    
-Module with cmdline parsing (1)
--------------------------------
-
-.. sourcecode:: python
-
-    """
-    Module docstring.
-    """
-
-    import sys
-    import optparse
-
-    def process_command_line(argv):
-        if argv is None:
-            argv = sys.argv[1:]
-
-        # initialize the parser object:
-        parser = optparse.OptionParser(
-            formatter=optparse.TitledHelpFormatter(width=78),
-            add_help_option=None)
-        # ... continued
-
-Module with cmdline parsing (2)
--------------------------------
-
-.. sourcecode:: python
-
-    # .. function above ..
-        parser.add_option(
-            '-h', '--help', action='help',
-            help='Show this help message and exit.')
-
-        settings, args = parser.parse_args(argv)
-
-        # check number of arguments, verify values, etc.:
-        if args:
-            parser.error('program takes no command-line arguments; '
-                        '"%s" ignored.' % (args,))
-
-        # further process settings & args if necessary
-
-        return settings, args
-
-Module cmdline parsing (3)
---------------------------
-
-.. sourcecode:: python
-
-    def main(argv=None):
-        settings, args = process_command_line(argv)
-        return 0
-
-    if __name__ == '__main__':
-        status = main()
-        sys.exit(status)
-
-EXERCISES: Your First Python Module
------------------------------------
-
-Imagine you have a data format that looks like this::
-
-    20,1425.5
-    24,1435.6
-    35,1350.8
-    42,1420.9
-    52,1420.5
-
-The first column represents an individual's age and the second column
-their test score on a standardized test.
-
-You want to write a Python module that will process a full file of that 
-data, but the file will be perhaps tens of thousands of records long.
-
-``tabulardata`` module
-----------------------
-
-.. sourcecode:: python
-
-    # tabulardata.py
-    def get_col(rows, idx=0, debug=False):
-        """Returns a list of values from the column with index idx."""
-        col_vals = []
-        for row in rows:
-            col_vals.append(row[idx])
-            if debug:
-                print col_vals
-        return col_vals
-
-    def avg(nums):
-        """Returns a single number value that is the average of all 
-        values in sequence nums."""
-        return sum(nums) / len(nums)
-
-``calc-avg.py`` script
-----------------------
-
-.. sourcecode:: python
-
-    from tabulardata import get_col, avg
-    # step 1: read in the data from the file
-    rows = []
-    for line in open("in.txt"):
-        # step 2: clean the line and convert into columns
-        line = line.strip()
-        line = line.split(",")
-        age = int(line[0])
-        score = float(line[1])
-        row = (age, score)
-        rows.append(row)
-    # step 3: calculate averages
-    ages, scores = get_col(rows), get_col(rows, idx=1)
-    avg_age, avg_score = avg(ages), avg(scores)
-    # step 4: output average to a file
-    outfile = open("out.txt", "w")
-    outline = "%s,%s" % (avg_age, avg_score)
-    outfile.write(outline)
-    outfile.close()
+Now, let's act dangerously.
 
 Files
 -----
@@ -1751,34 +1260,7 @@ Writing to files
     f = open('data/output.txt', 'w')
     for item in data:
         f.writeline(item)
-        # alternative technique
-        print >> f, item 
     f.close()
-
-String IO
----------
-
-.. sourcecode:: python
-
-    data = [1, 2, 3, 4, 5]
-    f = cStringIO()
-    for item in data:
-        f.writeline(item)
-
-
-Bufferred reading
------------------
-
-.. sourcecode:: python
-
-    reader = open('data/huge.txt')
-    data = reader.read(64)
-    while data != '':
-        data = reader.read(64)
-        process(data)
-    reader.close()
-
-This tends not to be necessary; only for larger files.
 
 Lazy programmer reading
 -----------------------
@@ -1791,178 +1273,21 @@ Lazy programmer reading
 
 Explanation of that last line will come soon!
 
-Quick aside on line endings
----------------------------
+Using Modules
+-------------
 
 .. class:: incremental
 
-    Unix: newline ('\n')
+    The only parts of the standard library we have used so far are the ones that are built-in -- either methods of built-in types like ``list`` and ``str``, built-in functions like ``sorted``, built-in constants like ``True``, or built-in exception types like ``NameError``.
 
-    Windows: carriage return + newline ('\r\n')
+    There are a wealth of other functions available via the import mechanism and modules.
 
-    Oh dear... Python converts '\r\n' to '\n' and back on Windows. To prevent this (e.g., when reading image files) open the file in binary mode:
+    This is also how you utilize 3rd-party modules.
 
-.. sourcecode:: python
+Python .py files
+----------------
 
-    reader = open('mydata.dat', 'rb')
-
-Modules and scripts
--------------------
-
-The organization of your code source files can help or hurt you with
-code re-use.
-
-Most people start their Python programming out by putting everything in
-a script: 
-
-.. sourcecode:: python
-
-   #!/usr/bin/env python
-   # calc-squares.py:
-   for i in range(0, 10):
-      print i**2
-
-This is great for experimenting, but you can't re-use this code at all!
-
-Short note on UNIX
-------------------
-
-``#!/usr/bin/env python``
-
-UNIX folk: note the use of ``#!/usr/bin/env python``, which tells UNIX
-to execute this script using whatever ``python`` program is first in your
-path.  This is more portable than putting ``#!/usr/local/bin/python`` or
-``#!/usr/bin/python`` in your code, because not everyone puts python in
-the same place.)
-
-Scripts are not reusable
-------------------------
-
-.. sourcecode:: python
-
-   #!/usr/bin/env python
-   # calc-squares.py:
-   def squares(start, stop):
-      for i in range(start, stop):
-         print i**2
-   squares(0, 10)
-
-.. class:: incremental
-
-    I think that's a bit better for re-use -- you've made ``squares``
-    flexible and re-usable -- but there are two mechanistic problems.
-
-Problems with scripts
----------------------
-
-.. class:: incremental
-
-    First, it's named ``calc-squares.py``, which means it can't readily be
-    imported.  (Import filenames have to be valid Python names, of
-    course!) 
-
-    And, second, were it importable, it would execute ``squares(0, 10)``
-    on import - hardly what you want!
-
-Why import mechanism exists
----------------------------
-
-Namespaces are a great idea!
-
-.. image:: img/04_import.png
-    :align: center
-
-Convert a script to a module
-----------------------------
-
-To fix the first, just change the name:
-
-.. sourcecode:: python
-
-    #!/usr/bin/env python
-    # calc_squares.py:
-    def squares(start, stop):
-      for i in range(start, stop):
-          print i**2
-    squares(0, 10)
-
-.. class:: incremental
-
-    Good, but now if you do ``import calc_squares``, the ``squares(0, 10)`` code
-    will still get run! 
-
-    There are a couple of ways to deal with this.  The first
-    is to look at the module name: if it's ``calc_squares``, then the module is
-    being imported, while if it's ``__main__``, then the module is being run as
-    a script.
-
-Module-and-script pattern
--------------------------
-
-.. sourcecode:: python
-
-    #! /usr/bin/env python
-    # calc_squares.py:
-    def squares(start, stop):
-      for i in range(start, stop):
-         print i**2
-    if __name__ == '__main__':
-      squares(0, 10)
-
-Now, if you run ``calc_squares.py`` directly, it will run ``squares(0, 10)``;
-if you import it, it will simply define the ``squares`` function and leave
-it at that.  This is probably the most standard way of doing it.
-
-Module-and-tests pattern
-------------------------
-
-I actually prefer a different technique, because of my fondness for testing.
-(I also think this technique lends itself to reusability, though.)  I
-would actually write two files.
-
-.. sourcecode:: python
-
-    # squares.py:
-    __all__ = ["squares"]
-    def squares(start, stop):
-      for i in range(start, stop):
-         print i**2
-    def _test_squares():
-        pass
-    if __name__ == `__main__`:
-        import nose
-        nose.run()
-
-Script file separate
---------------------
-
-.. sourcecode:: python
-
-    # calc-squares:
-    #!/usr/bin/env python
-    import squares
-    squares.squares(0, 10)
-
-Why split our files this way?
------------------------------
-
-.. class:: incremental
-
-    First, this is eminently reusable code, because ``squares.py`` is completely
-    separate from the context-specific call.
-
-    Second, you can look at the directory listing in an instant and see that
-    ``squares.py`` is probably a library, while ``calc-squares`` must be a script,
-    because the latter cannot be imported.  
-
-Why split (con't)
------------------
-
-.. class:: incremental
-
-    Third, you can add automated tests to ``squares.py`` (as described below), and run them simply by running ``python squares.py``. 
-
-    Fourth, you can add script-specific code such as command-line argument handling to the script, and keep it separate from your data handling and algorithm code.
+Every file named with ``{name}.py`` is a Python module called ``name`` automatically. If it's on the ``$PYTHONPATH``, it can be imported. It's that simple!
 
 Packages
 --------
@@ -1977,407 +1302,6 @@ Packages
     big to fit into single files, or that have some logical substructure
     (e.g. a central library along with various utility functions that all
     interact with the central library).
-
-Sample package
---------------
-
-For an example, look at this directory tree: ::
-
-   package/
-     __init__.py    -- contains functions a(), b()
-     other.py       -- contains function c()
-     subdir/
-        __init__.py -- contains function d()
-
-From this directory tree, you would be able to access the functions like
-so:
-
-.. sourcecode:: python
-
-   import package
-   package.a()
-   import package.other
-   package.other.c()
-   import package.subdir
-   package.subdir.d()
-
-What is __init__.py?
---------------------
-
-.. class:: incremental
-
-    Note that ``__init__.py`` is just another Python file; there's nothing special
-    about it except for the name, which tells Python that the directory is a
-    package directory.
-
-    ``__init__.py`` is the only code executed on import, so if you want names and
-    symbols from other modules to be accessible at the package top level, you have
-    to import or create them in ``__init__.py``.
-
-Why use packages?
------------------
-
-There are two ways to use packages:
-
-    1. you can treat them as a convenient code organization technique, and make most of the functions or classes available at the top level
-
-    2. you can use them as a library hierarchy.
-
-__init__.py-heavy packages
----------------------------
-
-In the first case you would make all of the names above
-available at the top level: ::
-
- package/__init__.py:
-   from other import c
-   from subdir import d
-   ...
-
-which would let you do this: ::
-
-   import package
-   package.a()
-   package.b()
-   package.c()
-   package.d()
-
-Flat is better, right?
-----------------------
-
-That is, the names of the functions would all be immediately available at
-the top level of the package, but the implementations would be spread out
-among the different files and directories.
-
-**I personally prefer this because I don't have to remember as much ;)**
-
-Submodule-heavy packages
-------------------------
-
-The down side is that everything gets imported all at once, which (especially
-for large bodies of code) may be slow and memory intensive if you only need a
-few of the functions.
-
-If you wanted to keep the library hierarchy, just leave out the top-level
-imports.  The advantage here is that you only import the names you need.
-
-**However, you need to remember more.**
-
-Discussion on package trees
----------------------------
-
-Some people are fond of package trees, but I've found that hierarchies
-of packages more than two deep are annoying to develop on.
-
-You spend a
-lot of your time browsing around between directories, trying to figure
-out *exactly* which function you need to use and what it's named.
-
-Using __all__ for cleanup
--------------------------
-
-You can restrict what objects are exported from a module
-or package by listing the names in the ``__all__`` variable.  So, if
-you had a module ``some_mod.py`` that contained this code:
-
-.. sourcecode:: python
-
-    # some_mod.py:
-    __all__ = ['fn1']
-    def fn1(...):
-    ...
-    def fn2(...):
-    ...
-
-then only 'some_mod.fn1()' would be available on import.  This is a
-good way to cut down on "namespace pollution" -- the presence of
-"private" objects and code in imported modules -- which in turn makes
-introspection useful.
-
-``with`` statement (1 of 2)
----------------------------
-
-.. sourcecode:: python
-
-    # step 1: open file
-    reader = open('foo.txt')
-    # step 2: process data in file
-    for line in reader:
-        pass
-    # step 3: close file
-    reader.close()
-
-This is a common enough pattern that Python has a way to do it automatically.
-
-``with`` statement (2 of 2)
----------------------------
-
-.. sourcecode:: python
-
-    with open('foo.txt') as reader:
-        for line in reader:
-            pass
-    # automatically closes file upon exit of block
-
-This is one of Python's nicest protocols, called *context manager*.
-
-Context manager
-----------------
-
-A context manager is any object that implements two special methods,
-``__enter__`` and ``__exit__``.
-
-This ensures common handling for any procedure that tends to have a *setup
-step* and a *cleanup step* surrounding actual processing. Common examples:
-
-    * Closing files cleanly after processing them.
-    * Setting a decimal context / precision for a certain bit of code, and returning it to original state afterwards.
-    * Acquiring a lock and releasing it afterwards.
-
-Dunder protocols
-----------------
-
-The context management protocol is an example of a "Dunder Protocol".
-
-http://wiki.python.org/moin/DunderAlias
-
-Rather than rely on type heirarchies like other languages, Python has a 
-variety of cross-cutting protocols that are implemented using methods
-with a double-underscore prefix and suffix. These are sometimes referred
-to as "dunder" methods.
-
-Dunder examples
----------------
-
-Some other dunders:
-
-.. class:: incremental
-
-    * ``__init__`` and ``__new__``: for object initialization and creation
-    * ``__len__``: for making an object "countable" (can call ``len(x)`` on it)
-    * ``__copy__`` and ``__deepcopy__``: for making an object cloneable
-    * ``__int__`` and ``__str__``: for type conversions
-    * ``__call__``: to make an object *callable*, masquerade as a function
-    * ``__iter__``: object is an iterator
-    * ``__repr__``: an object's string representation
-
-Format dunders
---------------
-
-.. class:: incremental
-
-    * ``__format__``: used by ``str.format`` interpolation
-    * ``__repr``: used by ``repr`` built-in and Python shell
-    * ``__str__``: used by ``print`` and many libraries (like Java ``toString``)
-    * ``__pprint__``: used specifically by ``pprint`` (pretty print) library, covered later
-
-Dunder for deep magic only
---------------------------
-
-.. class:: incremental
-
-    It has become popular in some open source projects to make use of dunders for internal names. Imitation is a sincere form of flattery, but this is very much recommended *against*.
-
-    The Python maintainers chose dunder because they figured it was a safe place to
-    put internal Python protocols that are not likely to ever conflict with user code. You can have your own ``.len()``, ``._len()`` and ``.__len()`` methods, but ``__len__`` is reserved as a protocol with special systemwide meaning.
-
-But Dunders are necessary!
---------------------------
-
-Conversely, many programmers shy away from dunders altogether, thinking that Python maintainers did not intend you to make use of them.
-
-Quite to the contrary: many dunders are downright essential for Python programming, e.g. ``__init__``, ``__repr__`` and ``__hash__``.
-
-PEP8 Discussion
----------------
-
-.. class:: incremental
-
-    You may have noticed that a lot of Python code looks pretty similar.
-
-    This is because there's an "official" style guide for Python
-    
-    It's called `PEP 8 <http://www.python.org/dev/peps/pep-0008/>`__.
-    
-    It's worth a quick skim, and an occasional deeper read for some sections.
-
-PEP8 Rules
-----------
-
-Here are a few tips that will make your code look internally
-consistent, if you don't already have a coding style of your own:
-
-    - use four spaces (NOT a tab) for each indentation level;
-
-    - use lowercase, _-separated names for module and function names, e.g.
-        ``my_module``;
-
-PEP8 Rules (con't)
-------------------
-
-    - use CapsWord style to name classes, e.g. ``MySpecialClass``;
-
-    - use '_'-prefixed names to indicate a "private" variable that should not be used outside this module, , e.g. ``_some_private_variable``;
-
-    - use '__'-prefixed names to indicate truly private variables/methods -- Python's ``object`` type has special handling of these, in fact
-
-Regular expressions
--------------------
-
-.. class:: incremental
-    Now that you know about lists, dictionaries, and files, you'll want to be
-    able to do something useful with that knowledge.
-
-    A *regular expression* is a powerful domain-specific language for text 
-    pattern matching.
-
-    Python, like most other modern languages, provides standard library support
-    for this powerful tool.
-
-Basic re module
----------------
-
-.. sourcecode:: python
-
-    >>> import re
-    >>> RE_EMAIL = r'[\S]+@[\S]+'
-    >>> re.match(RE_EMAIL, 'test@nowhere.com')
-    <_sre.SRE_Match object at 0x11acac0>
-    >>> re.match(RE_EMAIL, 'test@')
-    None
-
-Dissecting the e-mail RegExp
-----------------------------
-
-.. class:: incremental
-
-    ``>>> RE_EMAIL = r'[\S]+@[\S]+'``
-
-    ``[\S]`` means the *character class* containing any non-whitespace character.
-    Could also be written:
-    
-    ``[^ \t\n\r\f\v]``
-
-    ``+`` symbol means that any char from that class must occur one or more times.
-
-    ``@`` character is treated as a literal here.
-
-The match object
-----------------
-
-.. sourcecode:: python
-
-    >>> match = re.match(RE_EMAIL, 'test@nowhere.com')
-    >>> for method in ("span", "start", "end", "groups"):
-    ...     print method, getattr(m, method)()
-    ('span', (0, 20))
-    ('start', 0)
-    ('end', 20)
-    ('groups', ())
-
-Matching with groups
---------------------
-
-.. class:: incremental
-
-    Regular expressions tend to be used for two purposes: *validation* and *partial matching*.
-
-    **Validation**: if ``Match`` object is returned, it passes; if ``None`` is returned, it fails.
-
-    **Partial Matching**: If ``Match`` object is returned, we break the string into *groups*.
-
-    Imagine if we needed to refer to the username/domain separately in an email address.
-
-Rewrite email RegExp with groups
---------------------------------
-
-.. sourcecode:: python
-
-    >>> import re
-    >>> RE_EMAIL = r'(?P<username>[\S]+)@(?P<domain>[\S]+)'
-    >>> match = re.match(RE_EMAIL, 'test@nowhere.com')
-    >>> match.groups()
-    ('test', 'nowehere.com')
-    >>> match.groupdict()
-    {'domain': 'nowhere.com', 'username': 'test'}
-
-Enhanced email matching
------------------------
-
-.. sourcecode:: python
-
-    import re
-    RE_EMAIL = re.compile(r'''
-        (?P<username>[\S]+) # match username portion
-        @                   # at sign (@) literal
-        (?P<domain>.*)      # match domain portion
-    ''', re.VERBOSE)
-    match = RE_EMAIL.match('test@google.com')
-    print match.span()
-    print match.groups()
-    print match.groupdict()
-    email = match.groupdict()
-    print "User entered email domain %s" % email["domain"]
-    bad = re.match(RE_EMAIL, "test@")
-    print bad
-
-
-EXERCISES: Sorting and Data
----------------------------
-
-    * http://code.google.com/edu/languages/google-python-class/sorting.html
-    * http://code.google.com/edu/languages/google-python-class/dict-files.html
-    * http://code.google.com/edu/languages/google-python-class/regular-expressions.html
-
-EXERCISES: Working with File Formats
--------------------------------------
-
-    * http://code.google.com/edu/languages/google-python-class/exercises/baby-names.html
-    * http://code.google.com/edu/languages/google-python-class/regular-expressions.html
-
-"Public" and "private" functions
----------------------------------
-
-.. class:: incremental
-
-    Many other programming languages (C++, Java) devote many of their keywords to *access control* -- think keywords like *private*, *public*, and *protected*.
-
-    It may be a surprise that Python has **none of that**.
-
-    Indeed, most Python programmers take "We're all adults here" to its logical conclusion, and declare that privacy is overrated in programming.
-
-Privacy conventions
--------------------
-
-.. sourcecode:: python
-
-    # mymath.py
-    __all__ = ["square"]
-    _SIZE_CACHE = 20
-    _CACHE = [_square(x) for x in range(_SIZE_CACHE)]
-    def square(x):
-        if x < 0 or x > _SIZE_CACHE:
-            # value not in cache
-            return _square(x)
-        # value is cached, return directly
-        return _CACHE[x]
-    def _square(x):
-        return x**2
-
-Leading underscore on ``_CACHE``, ``_SIZE_CACHE``, and ``_square`` make it clear they aren't *meant* to be used directly.
-
-Modules vs. Singletons
-----------------------
-
-.. class:: incremental
-
-    Modules are basically singletons.
-
-    Python programmers don't create singletons, they use modules.
-
-    Modules can contain functions, classes, values, and, through the package mechanism, other modules.
-
-    Good module organization == good code organization in Python.
 
 Importing functions
 -------------------
@@ -2460,59 +1384,6 @@ First-class built-ins
     >>> print reduce(add, [-3, -2, 0, 1, 2])
     -2
 
-First-class functions
----------------------
-
-.. sourcecode:: python
-
-    >>> from pprint import pprint
-    >>> import sys
-    >>> def render(data, methods=None):
-    ...     if methods is None:
-    ...         methods = (,)
-    ...     for method in methods:
-    ...         method(data)
-    >>> out_methods = (
-    ...         pprint, 
-    ...         lambda data: sys.stdout.write(repr(data))
-    ...     )
-    >>> render(methods=out_methods)
-
-Dissecting first-class functions
---------------------------------
-
-.. sourcecode:: python
-
-    out_methods = (
-       pprint, 
-       lambda data: sys.stdout.write(repr(data))
-    )
-
-.. class:: incremental
-
-    ``pprint`` is just another label, it happens to point at a function.
-
-    ``lambda`` is a special keyword for creating simple anonymous functions using
-    a concise syntax.
-
-    functions don't have to live anywhere in particular; here, we're inserting them
-    into a 2-tuple labeled ``out_methods``. 
-
-First-class functions go anywhere
----------------------------------
-
-.. sourcecode:: python
-
-    >>> render(methods=out_methods)
-
-.. class:: incremental
-
-    Yes, you just passed a 2-tuple of functions to another function as an argument.
-
-    **So what?**
-
-    Other languages make this needlessly difficult (think Anonymous Inner Classes in Java, or ``Runnable`` interface). In Python, no problem.
-
 Higher order function
 ---------------------
 
@@ -2523,51 +1394,6 @@ Higher order function
     Just the same, functions can also *return functions*.
 
     These are sometimes known as *higher-order functions*.
-
-A function factory
-------------------
-
-We declare a function that builds functions.
-
-.. sourcecode:: python
-
-    from re import match
-    def regex_factory(pattern):
-        def matcher(string):
-            match = re.match(pattern, string)
-            return match.groups()
-        return matcher
-
-And now, to use it:
-
-.. sourcecode:: python
-
-    >>> m = regex_factory("([A-Z]+)([0-9]+)")
-    >>> m("ABC009")
-    ('ABC', '009')
-
-Optimizing the factory
------------------------
-
-.. sourcecode:: python
-
-    def precompile_factory_enhance(slow_factory):
-        """Higher-order function that optimizes a slow
-        function factory that accepts regex patterns 
-        as its only arg and makes it a fast function 
-        that uses a compiled pattern."""
-        def fast_factory(pattern):
-            compiled = re.compile(pattern)
-            return slow_factory(compiled)
-        return fast_factory
-    # replace our old regex_factory with the enhanced one
-    regex_factory = precompile_factory_enhance(regex_factory)
-
-.. sourcecode:: python
-
-    >>> m = regex_factory("([A-Z]+)([0-9]+)")
-    >>> m("ABC009")
-    ('ABC', '009')
 
 Decorators
 ----------
@@ -2610,29 +1436,6 @@ some more mechanics about functions. The star argument syntax::
     @decorator
     def my_fn(arg1, arg2, default1=None):
         pass
-
-EXERCISES: Functional programming
----------------------------------
-
-    * Write a ``debug_log`` higher-order function that outputs arguments
-      passed to a function using ``pprint`` before entering a function
-      and outputs the return value after leaving.
-
-    * Write a ``memoize`` higher-order function that takes a function as
-      its argument and caches all calls to the underlying function using
-      a dictionary.
-
-    * Use the two together for optimizing a fibonacci sequence generator
-      function.
-
-Day 3
-------
-
-Day 1 was to learn enough to be dangeorus.
-
-Day 2 you became dangerous.
-
-Day 3, young grasshopper, you become **Pythonic**.
 
 The iterator
 ------------
@@ -2726,56 +1529,6 @@ List comprehensions example (3)
     >>> from glob import glob
     >>> [f for f in glob('*.py*') if os.stat(f).st_size > 6000] 
 
-``dict`` and ``set`` comprehensions?
-------------------------------------
-
-.. sourcecode:: python
-
-    >>> fstats = dict([(f, os.stat(f)) for f in glob('*py*')])
-    >>> owners = set([os.stat(f).st_uid for f in glob('*py*')])
-    >>> fstats["ex1.py"]
-    posix.stat_result(st_mode=33188, st_mtime=1307117107, ...)
-    >>> 1000 in owners
-    True
-
-Double listcomps!
------------------
-
-.. sourcecode:: python
-
-    container = [[1, 2, 3], [2, 3, 4]]
-    items = [item
-                for nested in container
-                for item in nested]
-
-This may be confusing. What does this do?
-
-dict.items vs. dict.iteritems
------------------------------
-
-.. class:: incremental
-
-    When you start coding declaratively and operating on large datasets, you start to worry about memory.
-
-    ``dict.items`` returns all the items of a dictionary as a brand new list. If your dictionary is big, this can be very wasteful.
-
-    ``dict.iteritems`` returns an *iterator* over the items of your dictionary. Combined with list comprehensions, this can be a memory-efficient way to work with your data.
-
-    In Python 3, ``iteritems`` is gone and ``items`` now returns an iterator. If you want a true clone, you can use ``list(d.items())``.
-
-EXERCISES: Iterators and Iterator Expressions
-----------------------------------------------
-
-Create a list of 1000 elements::
-
-    l = range(1000)
-
-And now, perform the following operations on it, generating new lists with list comprehensions:
-
-    * Return a list with the square of every value in the list
-    * Return a list with only those numbers whose string representation is exactly two characters, as strings
-    * Return a list half the size with pairwise sums
-
 Reading code
 ------------
 
@@ -2853,54 +1606,6 @@ yield keyword
 
     Until the next ``.next()``.
 
-Coroutines
-----------
-
-Coroutines are a more exotic form of generator built by using the ``yield`` keyword as an expression rather than as a statement, e.g.
-
-.. sourcecode:: python
-
-    def comment_filter(target):
-        while True:
-            line = (yield)
-            if not line.startswith("#"):
-                target.send(line)
-
-Use a coroutine
----------------
-
-So, how do we use one of these things?
-
-.. sourcecode:: python
-
-    def printer_sink():
-        while True:
-            recv = (yield)
-            if recv.startswith("#"):
-                continue
-            print(recv)
-    printer = printer_sink()
-    printer.next() # initialize
-    sink = comment_filter(printer())
-    sink.next()
-    sink.send("# commented line")
-    sink.send("regular line") # only this will output
-
-Yes, exotic, but great for setting up efficient data pipelines.
-
-Built-ins: range vs. xrange
----------------------------
-
-.. class:: incremental
-
-    Remember range from prior exercises/slides?
-
-    Well, it has a little brother. His name is ``xrange``.
-
-    ``xrange`` yields values in a range, rather than preallocating a big list for it.
-
-    Similarly to iteritems/items, ``xrange`` is removed in Py3 and ``range`` operates this way by default.
-
 Our own ``range``
 -----------------
 
@@ -2963,17 +1668,8 @@ What's the difference between them?
 
     Most expressions of form ``fn([listcomp])`` and be rewritten ``fn(genexp)`` safely.
 
-EXERCISES: Generators and Generator Expressions
------------------------------------------------
-
-    * Start with a list of 100,000 numbers.
-    * Set up a pipeline of generators that performs these transformations:
-        * square each number
-        * truncate to first 4 characters
-        * convert to integer
-
-Object-oriented vs. functional programming
--------------------------------------------
+Object-oriented vs. functional 
+------------------------------
 
 .. class:: incremental
 
@@ -3017,68 +1713,6 @@ The standard library
 
     But if you need more, your can extend ``pprint.PrettyPrinter``.
 
-pdb
----
-
-.. sourcecode:: python
-
-    import pdb; pdb.set_trace()
-
-Probably the handiest single line of Python, ever.
-
-Let's take a look at it interactively at the prompt.
-
-Rich debugger
--------------
-
-Tools like WingIDE provide a richer debugger.
-
-.. image:: img/15_debugger.png
-    :align: center
-    :class: scaled
-
-Call stack
-----------
-
-Debuggers allow you to navigate the callstack, which is useful for untangling complex, abstracted code.
-
-.. image:: img/16_callstack.png
-    :align: center
-
-os
---
-
-.. sourcecode:: python
-
-    >>> from os import path
-    >>> import os
-    >>> files = os.listdir(".")
-    >>> for fname in files:
-    ...     print path.abspath(fname)
-    /home/pixelmonkey/.pip
-    /home/pixelmonkey/.rstudio
-    ...
-
-No matter how x-platform Python is, it seems we always end up having
-to deal with the quirks of our OS.
-
-shutil
-------
-
-.. sourcecode:: python
-
-    >>> import shutil
-    >>> shutil.copyfile('data.db', 'archive.db')
-    >>> shutil.move('build/executables', 'installdir')
-
-EXERCISES: libraries, regex, and system
-----------------------------------------
-
-    * http://code.google.com/edu/languages/google-python-class/utilities.html
-    * http://code.google.com/edu/languages/google-python-class/exercises/copy-special.html
-    * http://code.google.com/edu/languages/google-python-class/exercises/log-puzzle.html
-
-
 Class syntax
 ------------
 
@@ -3092,7 +1726,7 @@ Class syntax
 
 .. sourcecode:: python
 
-    >>> from swfmd import Person
+    >>> from profiles import Person
     >>> help(Person)
     >>> person = Person()
     >>> person.<TAB> # (to see methods)
@@ -3199,7 +1833,7 @@ More advanced classes
     class Client(object):
         # base URL for Guardian open content API
         base_url = 'http://content.guardianapis.com/'
-        # Map paths (e.g. /content/search) to their corresponding methods:
+        # Map HTTP paths to instance methods:
         path_method_lookup = (
             ('^/search$', 'search'),
             ('^/tags$', 'tags'),
@@ -3212,426 +1846,6 @@ More advanced classes
             self.do_call(query)
 
 A real-world example.
-
-Methods
--------
-
-.. class:: incremental
-
-    Every function declared inside a class body is known as a *method*, which is automatically *bound* to an instance of the class at initialization time.
-
-    Inside a bound method, the first argument, typically named ``self``, contains the instance of the object in question. 
-
-The pesky ``self`` convention
-------------------------------
-
-.. class:: incremental
-
-    Guido van Rossum, Python's creator, has provided a slew of detail about his choice to require that all methods declared on a class receive a first argument that is the instance of the class.
-
-    Many programmers find this annoying, and wish they could work around it.
-
-    I'm one of those programmers.
-
-    But I'm here to tell you, in practice, you just get used to it and it ain't so bad.
-
-Working around self
--------------------
-
-This seems clever::
-
-    class SuperObj(object):
-        def __init__(self, **kwargs):
-            self.__dict__.update(**kwargs)
-
-.. sourcecode:: python
-
-    >>> s = SuperObj(name="Andrew", email="andrew@foo.com")
-    >>> s.name
-    "Andrew"
-
-But it's probably just a crutch.
-
-Not just methods
-----------------
-
-.. class:: incremental
-
-    Any non-function attributes are considered "class attributes", and are not treated in any special way. Note these are *shared* for all instances of the class, somewhat similarly to ``static`` properties in other languages.
-
-    Any attributes added to the instance directly using ``self.attr = val`` are considered "instance attributes".
-
-    Sometimes, you'll hear Pythonistas refer to the ``class dictionary`` and the ``instance dictionary``. That's because, under the hood, Python classes are basically fancy dictionaries.
-
-How does attribute lookup work?
--------------------------------
-
-.. class:: incremental
-
-    Attribute lookup is implemented by a special internal method called ``__getattribute__``, which checks the instance ``__dict__`` first, then the class ``__dict__``, and then walks up the class inheritance chain, until it finds a hit or raises ``AttributeError``.
-
-    Magic can also happen due to a dunder method called ``__getattr__``.
-
-    And further magic can happen due to something called *descriptors*.
-    
-__init__
----------
-
-At its core, a class is simply a class definition and *typically*, an initialization sequence implemented by ``__init__``.
-
-*Instances* of that class can act either as data containers or, more typically, *bundles of state and behavior*.
-
-__new__
---------
-
-.. class:: incremental
-
-    Whereas ``__init__`` controls object initialization, ``__new__`` runs
-    earlier to control object *creation*.
-
-    It is much rarer to use ``new``. One use-case is to cache class instances
-    (re-use classes if they have been constructed from equal arguments and 
-    are stateless).
-
-    Another is to implement singletons, though typically this is a bad idea.
-
-    I tend to stay away from __new__ most of the time.
-
-OO Design with Classes
-----------------------
-
-Classes can let you design object-oriented interfaces that are intuitive for business people to grasp.
-
-.. image:: img/21_oo.png
-    :align: center
-
-EXERCISES: Classes and introspection
-------------------------------------
-
-    * http://blamcast.net/python/ex42.html
-    * http://blamcast.net/python/ex45.html
-
-An example interface: tokenizer
--------------------------------
-
-.. class:: incremental
-
-    A *tokenizer* is an object that converts text strings into tokens using some sort of *tokenization algorithm*.
-
-    For example, a tokenizer might convert the sentence ``"The quick brown fox jumps over the lazy dog"`` into a sequence of tokens like ``["the", "quick", "brown", ...]``
-
-Let's do it together
---------------------
-
-Let's do a live coding session where we build our own library of text tokenizers.
-
-We'll then also compare them to tokenizers we can find on the web, and talk about filters and stemmers, as well.
-
-EXERCISES: More Classes and interfaces
---------------------------------------
-
-Your exercise is to define an interface for ``Tokenizer``, and then implement a couple of tokenizers against that interface, such as a whitespace tokenizer, one that recognizes punctuation, etc.
-
-Then, run each tokenizer on the same input using a snippet like this:: 
-
-    for tokenizer in tokenizers:
-        tokenizer.tokenize(string)
-
-A data transformation problem
-------------------------------
-
-Here is some CSV data:::
-
-    feature,area
-    A,32.5
-    A,45.6
-    A,42.1
-    B,1.5
-    B,6.08
-    B,5.1
-    C,5.9
-    C,16.5
-    C,32.5
-    D,45.6
-    D,42.1
-    D,6.08
-
-Problem specification
----------------------
-
-Imagine we need to do the following:
-    * group by the "feature" column and sum those values, to generate a third column, "sum by feature"
-    * for each row, calculate the percentage of the "sum by feature" of a given individual row
-
-Data xform (1)
---------------
-
-.. sourcecode:: python
-
-    from operator import itemgetter
-    from collections import defaultdict
-    from pprint import pprint
-
-    class Entry(object):
-        pass
-
-    with open("areadata.txt") as reader:
-        lines = reader.readlines()
-        lines = [line.strip().split(",") for line in lines]    
-        header, data = lines[0], lines[1:]
-
-        def make_entry(row):
-            """From a sequence with cols of data, makes an 
-            object (type Entry) whose attrs are the header 
-            labels and whose values are the column values."""
-            entry = Entry()
-            for i, val in enumerate(row):
-                setattr(entry, header[i], val)
-            return entry
-
-Data xform (2)
---------------
-
-.. sourcecode:: python
-
-    # ... still under with keyword
-        for line in lines:        
-            rows = []
-            for row in data:
-                # convert values in columns
-                column_types = (str, float)
-                rows.append([column_types[i](val) 
-                                for i, val in enumerate(row)])
-            # sort rows by first column
-            rows = sorted(rows, key=itemgetter(0))
-            # sums dictionary holds a mapping of feature => list of
-            # area sums; if key is not present, creates an empty list
-            sums = defaultdict(list)
-            # group values with same feature
-            for row in rows:
-                entry = make_entry(row)
-                sums[entry.feature].append(entry.area)
-
-Data xform (3)
---------------
-
-.. sourcecode:: python
-
-    # ... still under with
-        # ... still under for line in lines
-            # now that all gathered together, let's sum them
-            for key, val in sums.iteritems():
-                sums[key] = sum(val)
-            # re-iterate over the original list of rows to generate the 
-            # new derived columns, sum and percent
-            for row in rows:
-                fmt = "%.2f"
-                entry = make_entry(row)
-                sum_ = sums[entry.feature]
-                row.append(sum_)
-                percent = fmt % ((entry.area / sum_) * 100)
-                row.append(percent)
-                row[1] = fmt % row[1] 
-                row[2] = fmt % row[2]
-        # print the result in a pretty way
-        pprint(rows)
-
-Deciding between a function and a class
----------------------------------------
-
-.. class:: incremental
-
-    You might wonder, with all of this flexibility...
-
-    How do I decide between a function and a class?
-
-
-Some functionality is reserved for classes
-------------------------------------------
-
-.. class:: incremental
-
-    * Inheritance and type heirarchies
-    * Exception types
-    * Attribute lookup customization
-    * Operator overloading
-    * Most Dunder protocols
-
-For everything else, prefer functions
--------------------------------------
-
-Only take on as much complexity as you actually need!
-
-Exception heirarchy
--------------------
-
-The Python exception heirarchy is easy to grasp, and a good example of a class-based type heirarchy.
-
-.. image:: img/20_exheirarchy.png
-    :align: center
-
-
-Exception handling in detail
-----------------------------
-
-Handling exceptions involves thinking about alternative control flows.
-
-.. image:: img/19_exhandling.png
-    :align: center
-
-Solvable and Unsolvable Anagrams
---------------------------------
-
-.. sourcecode:: python
-
-    >>> anagram(3, solvable=True)
-    "dgo"
-    >>> solve("dgo")
-    ["god", "dog"]
-    >>> anagram(3, solvable=False)
-    "xxx"
-    >>> solve("xxx")
-    None
-
-EXERCISES: Build the Anagram API
---------------------------------
-
-Your program must:
-    * Generates solvable and unsolvable anagram puzzles.
-    * Exposes this API as both a command-line interface and an interactive interface.
-    * Is written as a Python module that can be imported by other code.
-    * Is written in object oriented and functional styles so that components can be reused.
-
-A better understanding of Classes
----------------------------------
-
-Python's object orientation capabilities are truly top-notch. We'll explore some ways how in this section.
-
-Property getters
-----------------
-
-.. sourcecode:: python
-
-    >>> class B(object):
-    ...   def _get_special(self):
-    ...       return 5
-    ...   special = property(_get_special)
-    >>> b = B()
-    >>> b.special
-    5
-
-Property setters
-----------------
-
-.. sourcecode:: python
-
-    >>> class B(object):
-    ...   def _get_special(self):
-    ...      return 5
-    ...   def _set_special(self, value):
-    ...      print 'ignoring', value
-    ...   special = property(_get_special, _set_special)
-    >>> b = B()
-    >>> b.special
-    5
-    >>> b.special = 10
-    ignoring 10
-    >>> b.special
-    5
-
-Rewriting Employee with a property
-----------------------------------
-
-.. sourcecode:: python
-
-    from datetime import datetime
-
-    class Employee(object):
-        def __init__(self, birth_year):
-            self.birth_year = birth_year
-        def _get_age(self):
-            return datetime.now().year - self.birth_year
-        def _set_age(self, age):
-            self.birth_year = datetime.now().year - age
-        age = property(_get_age, _set_age)
-
-Using the new properties
-------------------------
-
-.. sourcecode:: python
-
-    >>> emp = Employee(1984)
-    >>> emp.age
-    27
-    >>> emp.age = 28
-    >>> emp.birth_year
-    1983
-
-Using the decorator version
----------------------------
-
-.. sourcecode:: python
-
-    from datetime import datetime
-
-    class Employee(object):
-        def __init__(self, birth_year):
-            self.birth_year = birth_year
-        @property
-        def age(self):
-            return datetime.now().year - self.birth_year
-        @age.setter
-        def age(self, age):
-            self.birth_year = datetime.now().year - age
-
-Descriptor objects
-------------------
-
-.. sourcecode:: python
-
-    class Alias(object):
-        def __init__(self, attr_name):
-            self.attr_name = attr_name
-        def __get__(self, obj, type=None):
-            return getattr(obj, self.attr_name)
-        def __set__(self, obj, value):
-            return setattr(obj, self.attr_name, value)
-
-``Alias`` instances are *descriptors*, objects that can be used as a kind
-of "attribute guardian".
-
-Using descriptors
------------------
-
-.. sourcecode:: python
-
-    class Person(object):
-        def __init__(self, birth_year):
-            self.birth_year = birth_year
-            self.nicknames = []
-        born_in = Alias("birth_year")
-        nicks = Alias("nicknames")
-
-These are used often in frameworks, e.g. Django's ``CharField`` and ``IntField`` types.
-
-An aliased field without data duplication
------------------------------------------
-
-.. sourcecode:: python
-
-    >>> person = Person(1984)
-    >>> person.birth_year
-    1984
-    >>> person.born_in
-    1984
-    >>> person.born_in = 1983
-    >>> person.birth_year
-    1983
-    >>> person.nicknames.extend(["Andy", "Drew"])
-    >>> person.nicks
-    ["Andy", "Drew"]
-    >>> person.nicks is person.nicknames
-    True
 
 Customizing __repr__ and __str__
 ---------------------------------
@@ -3671,65 +1885,78 @@ Using ``repr`` and ``str``
     >>> print person
     John Doe
     
-__getattribute__
------------------
+Methods
+-------
 
 .. class:: incremental
 
-    Called unconditionally to implement attribute accesses for instances of the class.
+    Every function declared inside a class body is known as a *method*, which is automatically *bound* to an instance of the class at initialization time.
 
-    If the class also defines __getattr__(), the latter will not be called unless __getattribute__() either calls it explicitly or raises an ``AttributeError``.
+    Inside a bound method, the first argument, typically named ``self``, contains the instance of the object in question. 
 
-    This method should return the (computed) attribute value or raise an ``AttributeError`` exception.
+The pesky ``self`` convention
+------------------------------
 
-__getattr__
-------------
+.. class:: incremental
 
-.. sourcecode:: python
-    
-    >>> class A:
-    ...    def __getattr__(self, name):
-    ...        if name == 'special':
-    ...           return 5
-    ...        return self.__dict__[name]
-    >>> a = A()
-    >>> a.special
-    5
+    Many programmers find this annoying, and wish they could work around it.
 
-In *old-style classes*, this was the only way to control attribute access.
+    I'm one of those programmers.
 
-Nowadays, it's reserved only for "magic" objects, proxies, and frameworks.
+    But I'm here to tell you, in practice, you just get used to it and it ain't so bad.
 
-EXERCISES: Build a proxy class
--------------------------------
+    Plus, GvR blesses this decision and has said it won't change.
 
-A proxy class is a class that can wrap any other object to add some functionality to it, but will forward all original requests onto that original object. For example:
+Not just methods
+----------------
 
-.. sourcecode:: python
+.. class:: incremental
 
-    >>> person = Person()
-    >>> tracer = Tracer(person)
-    >>> tracer.birth_year = 1984
-    [tracer] setting attribute "birth_year" => 1984
-    >>> tracer.compute_age()
-    [tracer] calling method "compute_age"
-    26
+    Any non-function attributes are considered "class attributes", and are not treated in any special way. Note these are *shared* for all instances of the class, somewhat similarly to ``static`` properties in other languages.
 
-Implement ``Tracer``.
+    Any attributes added to the instance directly using ``self.attr = val`` are considered "instance attributes".
 
+    Sometimes, you'll hear Pythonistas refer to the ``class dictionary`` and the ``instance dictionary``. That's because, under the hood, Python classes are basically fancy dictionaries.
 
-EXERCISES: Build a type heirarchy
----------------------------------
+__init__
+---------
+
+At its core, a class is simply a class definition and *typically*, an initialization sequence implemented by ``__init__``.
+
+*Instances* of that class can act either as data containers or, more typically, *bundles of state and behavior*.
+
+OO Design with Classes
+----------------------
+
+Classes can let you design object-oriented interfaces that are intuitive for business people to grasp.
 
 .. image:: img/21_oo.png
     :align: center
 
-Build a set of classes that represents the data in this diagram.
+Deciding between a function and a class
+---------------------------------------
 
-More standard library
----------------------
+.. class:: incremental
 
-Let's take a quick whirlwind tour through some of my favorite stdlib modules.
+    You might wonder, with all of this flexibility...
+
+    How do I decide between a function and a class?
+
+Some functionality requires classes
+-----------------------------------
+
+.. class:: incremental
+
+    * Inheritance and type heirarchies
+    * Exception types
+    * Attribute lookup customization
+    * Operator overloading
+    * Most "Dunder" protocols
+
+For everything else, prefer functions
+-------------------------------------
+
+Only take on as much complexity as you actually need! This is the Python Way!
 
 itertools.groupby
 -----------------
@@ -3745,33 +1972,6 @@ itertools.groupby
     >>> odd[1].next()
     3
     ...
-
-itertools.product
------------------
-
-.. sourcecode:: python
-
-    >>> import itertools
-    >>> list(itertools.product('ABC', '123'))
-    [('A', '1'), ('A', '2'), ('A', '3'), 
-    ('B', '1'), ('B', '2'), ('B', '3'), 
-    ('C', '1'), ('C', '2'), ('C', '3')]
-
-itertools.combinations
-----------------------
-
-.. sourcecode:: python
-
-    >>> list(itertools.combinations('ABC', 2))
-    [('A', 'B'), ('A', 'C'), ('B', 'C')]
-
-itertools.chain
----------------
-
-.. sourcecode:: python
-
-    >>> list(itertools.chain(range(0, 3), range(10, 13)))
-    [0, 1, 2, 10, 11, 12]
 
 random
 ------
@@ -3804,57 +2004,6 @@ datetime
     >>> age.days
     14368
 
-math
-----
-
-.. sourcecode:: python
-
-    >>> import math
-    >>> math.cos(math.pi / 4.0)
-    0.70710678118654757
-    >>> math.log(1024, 2)
-    10.0
-
-pickle dump
------------
-
-.. sourcecode:: python
-
-    import pickle
-
-    data1 = {'a': [1, 2.0, 3, 4+6],
-            'b': ('string', u'Unicode string'),
-            'c': None}
-    selfref_list = [1, 2, 3]
-    selfref_list.append(selfref_list)
-
-    output = open('data.pkl', 'wb')
-
-    # Pickle dictionary using protocol 0.
-    pickle.dump(data1, output)
-
-    # Pickle the list using the highest protocol available.
-    pickle.dump(selfref_list, output, -1)
-
-    output.close()
-
-pickle load
------------
-
-.. sourcecode:: python
-
-    import pprint, pickle
-
-    pkl_file = open('data.pkl', 'rb')
-
-    data1 = pickle.load(pkl_file)
-    pprint.pprint(data1)
-
-    data2 = pickle.load(pkl_file)
-    pprint.pprint(data2)
-
-    pkl_file.close()
-
 json
 ----
 
@@ -3883,22 +2032,6 @@ collections
             d[k] += 1
     >>> d.items()
     [('i', 4), ('p', 2), ('s', 4), ('m', 1)]
-
-urllib / urllib2
-----------------
-
-.. sourcecode:: python
-
-    import urllib
-    import urllib2
-    url = 'http://www.someserver.com/cgi-bin/register.cgi'
-    values = {'name' : 'Andrew M',
-            'location' : 'Tampa, FL',
-            'language' : 'Python' }
-    data = urllib.urlencode(values)
-    req = urllib2.Request(url, data)
-    response = urllib2.urlopen(req)
-    page = response.read()
 
 doctest
 -------
@@ -3978,7 +2111,7 @@ sqlalchemy ORM (1)
 
     user_table = Table('acct_users', metadata,
                     Column('id', Integer, primary_key=True),
-                    Column('user_name', Unicode(16),
+                    Column('username', Unicode(16),
                             unique=True, nullable=False),
                     Column('password', Unicode(40), nullable=False),
                     Column('display_name', Unicode(255), default=''),
@@ -3991,13 +2124,24 @@ sqlalchemy ORM (2)
 
 .. sourcecode:: python
 
-    from sqlalchemy.orm import *
-
     class User(object):
-        def get_dos_password(self):
-            self.password.upper()
+        site_name = "http://socialnetwork.com"
+        @property
+        def profile_url(self):
+            url_template = "{base}/profile/{id}/{username}"
+            return url_template.format(
+                base=self.site_name,
+                username=self.username,
+                id=self.id)
+        @property
         def days_since_created(self):
             return (datetime.now() - self.created).days
+
+sqlalchemy ORM (3)
+------------------
+
+.. sourcecode:: python
+
     mapper(User, user_table)
     Session = sessionmaker()
     session = Session()
@@ -4010,25 +2154,6 @@ sqlalchemy ORM (2)
     user.password = "not a chance"
     session.add(user)
     session.commit()
-
-EXERCISES: Use the standard library
-------------------------------------
-
-Build a module that makes an HTTP request to Wikipedia for any given article page, e.g. Barack Obama. What it returns back is the number of occurrences of a string in the article page.
-
-Some requirements:
-
-    * Use ``urllib`` and ``urllib2`` to actually perform the HTTP request.
-    * Use a ``defaultdict`` to count the number of occurrences of the search term.
-    * Use the ``re`` module to search for the string in each line of the response page.
-    * Use ``doctest`` to make sure everything is working properly.
-
-
-EXERCISES: Compile this presentation!
--------------------------------------
-
-    * Full source code for this presentation is available
-    * You can compile it and refer back to it at any time
 
 Baby Turtles
 ------------
@@ -4051,15 +2176,10 @@ Other great presentations about Python
 
 * `Python & Stuff`_ by @japerk
 * `Generator Tricks for Systems Programmers`_ by @dabaez
+* `Python, Good to Great`_ by @jessenoller
 
 .. _Python & Stuff: http://www.slideshare.net/japerk/python-stuff-10047724
 .. _Generator Tricks for Systems Programmers: http://www.dabeaz.com/generators/
-
-Other great Python resources
------------------------------
-
-* `Python, Good to Great`_ by @jessenoller
-
 .. _Python, Good to Great: http://jessenoller.com/good-to-great-python-reads/
 
 End
@@ -4071,7 +2191,6 @@ Your host:
 
 Andrew Montalenti, http://pixelmonkey.org
 
-Principal, Aleph Point, http://alephpoint.com
-
 CTO, Parse.ly, http://parse.ly
 
+Principal, Aleph Point, http://alephpoint.com
