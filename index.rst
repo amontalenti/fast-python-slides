@@ -1916,7 +1916,14 @@ Not just methods
 
     Any attributes added to the instance directly using ``self.attr = val`` are considered "instance attributes".
 
+Classes are fancy dictionaries
+------------------------------
+
+.. class:: incremental
+
     Sometimes, you'll hear Pythonistas refer to the ``class dictionary`` and the ``instance dictionary``. That's because, under the hood, Python classes are basically fancy dictionaries.
+
+    A built-in, ``vars(object)``, lets you return the "instance dictionary" for a given instance of a class. This is useful to fetch all the data of a class in a generic way.
 
 __init__
 ---------
@@ -1958,20 +1965,11 @@ For everything else, prefer functions
 
 Only take on as much complexity as you actually need! This is the Python Way!
 
-itertools.groupby
------------------
+Python Stdlib
+-------------
 
-.. sourcecode:: python
-
-    >>> is_even = lambda x: x % 2 == 0
-    >>> items = sorted(range(1000), key=is_even)
-    >>> from itertools import groupby
-    >>> odd, even = groupby(items, is_even)
-    >>> odd[1].next()
-    1
-    >>> odd[1].next()
-    3
-    ...
+Let's now do a quick run through a few useful Python standard library modules
+to give you a sense of what they mean by "batteries included".
 
 random
 ------
@@ -2033,127 +2031,20 @@ collections
     >>> d.items()
     [('i', 4), ('p', 2), ('s', 4), ('m', 1)]
 
-doctest
--------
+itertools.groupby
+-----------------
 
 .. sourcecode:: python
 
-    def average(values):
-        """Computes the arithmetic mean of a list of numbers.
-
-        >>> print average([20, 30, 70])
-        40.0
-        """
-        return sum(values, 0.0) / len(values)
-
-    import doctest
-    doctest.testmod()   # automatically validate the embedded tests
-
-sqlalchemy (1)
---------------
-
-.. sourcecode:: python
-
-    from sqlalchemy import *
-
-    db = create_engine('sqlite:///tutorial.db')
-
-    db.echo = True
-
-    metadata = MetaData(db)
-
-    places = Table('places', metadata,
-        Column('id', Integer, primary_key=True),
-        Column('lat', Float),
-        Column('lng', Float),
-        Column('desc', String(50))
-    )
-    places.create()
-
-sqlalchemy (2)
---------------
-
-.. sourcecode:: python
-
-    insert = places.insert()
-    insert.execute(desc='Wine Toad', lat=39.545, lng=42.4443)
-    insert.execute(
-            {'desc': 'SWFMD', 'lat': 38.555, 'lng': 43.55},
-            {'desc': 'Hampton Inn', 'lat': 34.555, 'lng': 42.55})
-
-    select = places.select()
-    resultset = select.execute()
-
-sqlalchemy (3)
---------------
-
-.. sourcecode:: python
-
-    row = resultset.fetchone()
-    print 'Id:', row[0]
-    print 'Desc:', row['desc']
-    print 'Lat:', row.lat
-    print 'Lng:', row[places.c.lng]
-
-    for row in resultset:
-        print row.desc, 'is @', row.lat, row.lng, 'lat/lng'
-
-sqlalchemy ORM (1)
-------------------
-
-.. sourcecode:: python
-
-    from sqlalchemy import *
-    from datetime import datetime
-    db = create_engine("sqlite:///test.db")
-    db.echo = True
-    metadata = MetaData(db)
-
-    user_table = Table('acct_users', metadata,
-                    Column('id', Integer, primary_key=True),
-                    Column('username', Unicode(16),
-                            unique=True, nullable=False),
-                    Column('password', Unicode(40), nullable=False),
-                    Column('display_name', Unicode(255), default=''),
-                    Column('created', DateTime, default=datetime.now))
-
-    user_table.create()
-
-sqlalchemy ORM (2)
-------------------
-
-.. sourcecode:: python
-
-    class User(object):
-        site_name = "http://socialnetwork.com"
-        @property
-        def profile_url(self):
-            url_template = "{base}/profile/{id}/{username}"
-            return url_template.format(
-                base=self.site_name,
-                username=self.username,
-                id=self.id)
-        @property
-        def days_since_created(self):
-            return (datetime.now() - self.created).days
-
-sqlalchemy ORM (3)
-------------------
-
-.. sourcecode:: python
-
-    mapper(User, user_table)
-    Session = sessionmaker()
-    session = Session()
-
-    # empty right now
-    results = session.query(User)
-
-    user = User()
-    user.user_name = "amontalenti"
-    user.password = "not a chance"
-    session.add(user)
-    session.commit()
+    >>> is_even = lambda x: x % 2 == 0
+    >>> items = sorted(range(1000), key=is_even)
+    >>> from itertools import groupby
+    >>> odd, even = groupby(items, is_even)
+    >>> odd[1].next()
+    1
+    >>> odd[1].next()
+    3
+    ...
 
 Baby Turtles
 ------------
@@ -2182,6 +2073,23 @@ Other great presentations about Python
 .. _Generator Tricks for Systems Programmers: http://www.dabeaz.com/generators/
 .. _Python, Good to Great: http://jessenoller.com/good-to-great-python-reads/
 
+Lab Time
+--------
+
+Now it's time to explore a real Python web application that is using 
+some of the best web prototyping technologies around. These include:
+
+* Flask (web framework)
+* Jinja (template engine)
+* MongoDB (persistent database)
+* Bootstrap (HTML/CSS boilerplate)
+* jQuery (JavaScript library)
+
+https://github.com/amontalenti/fastflask
+
+https://github.com/amontalenti/fastflask/blob/master/README.rst
+
+
 End
 ----
 
@@ -2194,3 +2102,4 @@ Andrew Montalenti, http://pixelmonkey.org
 CTO, Parse.ly, http://parse.ly
 
 Principal, Aleph Point, http://alephpoint.com
+
