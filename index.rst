@@ -336,21 +336,10 @@ in files or provided at the command line.
     python -c "print 1 + 2"
     python myprog.py
 
-Label assignment
-----------------
+Whirlwind Tour of Language Features
+-----------------------------------
 
-.. sourcecode:: python
-
-    >>> planet = 'Sedna'
-    >>> print plant # note the deliberate misspelling
-    Traceback (most recent call last):
-        print plant
-        NameError: name 'plant' is not defined
-    >>> 
-
-Must assign a value to a label before it can be used. No compile-time check
-that label has already been assigned, so mis-spelled label name raises a
-``NameError`` exception. *This is a common source of bugs*.
+We need to move briskly.
 
 Strong typing
 -------------
@@ -547,31 +536,6 @@ Float context
     >>> type(3 + 0.1)
     <type 'float'>
 
-
-Decimals
---------
-
-.. sourcecode:: python
-
-    >>> from decimal import Decimal as D
-    >>> D("3") + D("0.1")
-    Decimal('3.1')
-    >>> D("3") + D("0.1") == D("3.1")
-    True
-
-When dealing with non-scientific computations, you probably want to use the ``Decimal`` class. It is a little awkward to use -- you must specify your numbers as strings. However, it supports all expected operations directly on the Decimal object.
-
-To make it a little easier to use, I imported it using a module alias ``D``.
-
-Fractions
----------
-
-.. sourcecode:: python
-
-    >>> from fractions import Fraction as F
-    >>> F(1, 3) + F(1, 2)
-    Fraction(5, 6)
-
 Formatting
 ----------
 
@@ -672,14 +636,6 @@ Strings also support some great operators:
     True
     >>> p + (" %s " % "IS") + g[0:15] + "..."
     'PYTHON IS GREAT GREAT GRE...'
-
-Method chaining
----------------
-
-When methods are chained, the intermediary results of computation are simply discarded.
-
-.. image:: img/05_methodchain.png
-    :align: center
 
 Built-in namespace
 ------------------
